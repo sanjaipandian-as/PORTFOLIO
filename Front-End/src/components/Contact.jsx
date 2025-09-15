@@ -17,7 +17,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const res = await axios.post(`https://sanjaipandian-as-portfolio.onrender.com/contact`, formData)
+      const res = await axios.post(`https://sanjaipandian-ass-portfolio.onrender.com/contact`, formData)
       if (res.status === 200) {
         setStatus('Message sent successfully!')
         setFormData({ name: '', email: '', phone: '', message: '' })
