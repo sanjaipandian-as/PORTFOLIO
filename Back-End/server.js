@@ -24,6 +24,12 @@ const contactSchema = new mongoose.Schema({
   date: { type: Date, default: Date.now }
 })
 
+app.use(cors({
+  origin: "https://sanjaipandian-portfolio.netlify.app/", 
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
+
 const Contact = mongoose.model('Contact', contactSchema)
 
 app.post('/contact', async (req, res) => {
