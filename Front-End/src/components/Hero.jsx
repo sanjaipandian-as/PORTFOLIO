@@ -1,119 +1,136 @@
 import { useState } from "react";
 import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
-
+import "./style.css";
+import logotb from "../assets/logoITB.png";
+import myimage from "../assets/Myimage1.png"
 const Hero = () => {
   const [expanded, setExpanded] = useState(false);
 
   return (
     <div>
-      {/* Hero Section */}
-      <section className="relative w-full h-screen font-sans bg-white overflow-hidden">
-        {/* Navigation */}
-        <nav className="absolute top-6 right-16 flex items-center gap-10 text-black font-medium font-bold z-30">
-          <a href="#about" className="hover:underline">About me</a>
-          <a href="#skills" className="hover:underline">Skills</a>
-          <a href="#portfolio" className="hover:underline">Portfolio</a>
-          <a
-            href="#contact"
-            className="px-6 py-2 bg-white text-black rounded-full font-semibold shadow hover:bg-gray-200 transition"
-          >
-            CONTACT ME
-          </a>
-        </nav>
-
-        {/* Logo / Branding */}
-        <div className="absolute top-8 left-8 text-xl font-extrabold z-30">
-          <span className="tracking-widest">SANJAI</span>
+      <section
+        id="hero"
+        className="relative w-full h-screen font-sans bg-black overflow-hidden"
+      >
+        <div className="absolute top-0 left-0 h-full w-[50%] bg-gray-200 diagonal-clip z-10">
+          <div className="absolute top-8 left-8 text-3xl font-bold text-black tracking-[0.2em] z-30">
+            SP
+          </div>
         </div>
 
-        {/* Content */}
-        <div className="flex h-full">
-          {/* Left Side */}
-          <div className="relative w-1/2 bg-[#f5f6f8] flex flex-col justify-center px-20 clip-left z-20">
-            <h2 className="text-lg font-light mb-3">Hi, I am</h2>
-            <h1 className="text-5xl font-extrabold mb-3">Sanjai Pandian</h1>
-            <h3 className="text-lg text-gray-600 mb-10">
-              Full-Stack Developer & AI Enthusiast
+        <div className="absolute top-0 left-0 h-full w-[50%] z-20 flex flex-col justify-center pl-20 pr-10">
+          <div>
+            <h2 className="text-xl font-normal mb-3 text-gray-800">Hi, I am</h2>
+            <h1 className="text-7xl font-extrabold mb-3 text-black">
+              Sanjai Pandian
+            </h1>
+            <h3 className="text-xl text-gray-600 mb-10">
+              Front-end Developer / AI Enthusiast
             </h3>
-            <div className="flex gap-6 text-gray-700">
-              <a
-                href="mailto:example@gmail.com"
-                target="_blank"
-                rel="noreferrer"
-                className="p-3 bg-white shadow-md hover:shadow-lg rounded-md"
-              >
-                <FaEnvelope size={22} />
-              </a>
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noreferrer"
-                className="p-3 bg-white shadow-md hover:shadow-lg rounded-md"
-              >
-                <FaGithub size={22} />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noreferrer"
-                className="p-3 bg-white shadow-md hover:shadow-lg rounded-md"
-              >
-                <FaLinkedin size={22} />
-              </a>
-            </div>
           </div>
 
-          {/* Right Side */}
-          <div className="relative w-1/2 bg-black flex items-end justify-center clip-right">
+          <div className="flex gap-4">
+            <a
+              href="mailto:sanjaipandian.as@gmail.com"
+              aria-label="Email"
+              target="_blank"
+              rel="noreferrer"
+              className="p-3 bg-[#C4C4C4] text-black hover:bg-neutral-400 rounded-md transition-colors"
+            >
+              <FaEnvelope size={24} />
+            </a>
+
+            <a
+              href="https://github.com/sanjaipandian-as"
+              aria-label="GitHub"
+              target="_blank"
+              rel="noreferrer"
+              className="p-3 bg-[#C4C4C4] text-black hover:bg-neutral-400 rounded-md transition-colors"
+            >
+              <FaGithub size={24} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/sanjai-pandian-682629308/"
+              aria-label="LinkedIn"
+              target="_blank"
+              rel="noreferrer"
+              className="p-3 bg-[#C4C4C4] text-black hover:bg-neutral-400 rounded-md transition-colors"
+            >
+              <FaLinkedin size={24} />
+            </a>
+          </div>
+        </div>
+
+        <div className="absolute top-0 right-0 h-full w-[50%]">
+          <nav className="absolute top-8 right-19 flex items-center gap-18 text-white font-medium z-30">
+            <a href="#about" className="hover:underline">
+              About me
+            </a>
+            <a href="#skills" className="hover:underline">
+              Skills
+            </a>
+            <a href="#portfolio" className="hover:underline">
+              Portfolio
+            </a>
+            <a
+              href="#contact"
+              className="px-6 py-2 bg-white text-black rounded-full font-semibold shadow hover:bg-gray-200 transition-colors"
+            >
+              CONTACT ME
+            </a>
+          </nav>
+
+          <div className="absolute bottom-0 left-0 h-[90%] w-full flex justify-center items-end">
             <img
-              src="/profile.png"
-              alt="profile"
-              className="h-[90%] object-contain relative z-20"
+              src=""
+              alt="Sanjai Pandian"
+              className="h-full w-auto font-white object-contain"
+            />
+          </div>
+        </div>
+      </section>
+
+      <div className="w-full text-white">
+        <div className="bg-[#1D1D1D] py-10 px-20 flex items-center overflow-hidden">
+          <div className="w-1/2 pr-8">
+            <h2 className="text-lg font-bold tracking-widest mb-4">
+              Personal Statement
+            </h2>
+            <p className="text-sm mb-6 leading-relaxed">
+              Full-stack web developer specializing in the MERN stack, with
+              practical experience in designing and deploying AI-powered
+              applications and scalable web solutions. Adept at solving complex
+              problems, having completed over 80 data structures and algorithms
+              challenges. Committed to writing clean, secure, and efficient code
+              while continuously learning and applying best practices to build
+              user-friendly, high-performance applications
+              {expanded && (
+                <>
+                  {" "}
+                  and solved 80+ leetcode problems. Always exploring new
+                  technologies and frameworks to stay ahead in the fast-paced
+                  world of software development. Excited to contribute to
+                  innovative projects and collaborate with dynamic teams.
+                </>
+              )}
+            </p>
+            <button
+              onClick={() => setExpanded(!expanded)}
+              className="relative px-6 py-3 text-sm font-semibold text-white border-0 bg-transparent cursor-pointer after:absolute after:right-0 after:top-1/2 after:h-6 after:w-1 after:bg-white before:absolute before:left-0 before:top-1/2 before:h-6 before:w-1 before:bg-white transform after:-translate-y-1/2 before:-translate-y-1/2"
+            >
+              {expanded ? "READ LESS" : "READ MORE"}
+            </button>
+          </div>
+
+          <div className="w-1/2 h-48 relative pr-50px">
+            <img
+              src={logotb}
+              alt="Background Logo"
+              className="absolute top-10 left-1/4 h-[250%] w-auto -translate-y-1/2 opacity-50 pointer-events-none"
             />
           </div>
         </div>
 
-        {/* Clip Styles */}
-        <style jsx>{`
-          .clip-left {
-            clip-path: polygon(0 0, 100% 0, 80% 100%, 0% 100%);
-          }
-          .clip-right {
-            clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
-          }
-        `}</style>
-      </section>
-
-      {/* Personal Statement */}
-      <div className="w-full text-white">
-        <div className="bg-black py-10 px-20">
-          <h2 className="text-lg font-bold tracking-widest mb-4">
-            Personal Statement
-          </h2>
-          <p className="text-sm max-w-4xl mb-6 leading-relaxed">
-            Full-stack web developer specializing in the MERN stack, with
-            practical experience in designing and deploying AI-powered
-            applications and scalable web solutions. Adept at solving complex
-            problems, having completed over 80 data structures and algorithms
-            challenges. Committed to writing clean, secure, and efficient code
-            while continuously learning and applying best practices to build
-            user-friendly, high-performance applications
-            {expanded && (
-              <>
-                {" "}and solved 80+ leetcode problems. Always exploring new
-                technologies and frameworks to stay ahead in the fast-paced
-                world of software development. Excited to contribute to
-                innovative projects and collaborate with dynamic teams.
-              </>
-            )}
-          </p>
-          <button
-            onClick={() => setExpanded(!expanded)}
-            className="text-sm font-semibold border-b border-white pb-1 hover:text-gray-300 transition"
-          >
-            {expanded ? "READ LESS" : "READ MORE"}
-          </button>
-        </div>
       </div>
     </div>
   );

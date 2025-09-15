@@ -15,9 +15,11 @@ mongoose.connect(process.env.MONGO_URI, {
   useUnifiedTopology: true
 })
 
+// Updated schema to include phone
 const contactSchema = new mongoose.Schema({
   name: String,
   email: String,
+  phone: String,  // Added phone field
   message: String,
   date: { type: Date, default: Date.now }
 })
@@ -25,12 +27,15 @@ const contactSchema = new mongoose.Schema({
 const Contact = mongoose.model('Contact', contactSchema)
 
 app.post('/contact', async (req, res) => {
-  const { name, email, message } = req.body
+  const { name, email, phone, message } = req.body
+
   if (!name || !email || !message) {
-    return res.status(400).json({ error: "All fields are required." })
+    return res.status(400).json({ error: "Name, email, and message are required." })
   }
-  const newContact = new Contact({ name, email, message })
+
+  const newContact = new Contact({ name, email, phone, message })  // Save phone
   await newContact.save()
+
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -38,13 +43,16 @@ app.post('/contact', async (req, res) => {
       pass: process.env.EMAIL_PASS
     }
   })
+
   const mailOptions = {
     from: email,
     to: process.env.EMAIL_USER,
     subject: `New contact from ${name}`,
-    text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
+    text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}\nMessage: ${message}`  // Include phone in email
   }
+
   await transporter.sendMail(mailOptions)
+
   res.status(200).json({ message: 'Message saved and email sent!' })
 })
 
