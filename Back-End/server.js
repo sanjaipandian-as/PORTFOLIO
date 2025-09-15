@@ -25,7 +25,7 @@ const contactSchema = new mongoose.Schema({
 })
 
 app.use(cors({
-  origin: "https://sanjaipandian-portfolio.netlify.app/", 
+  origin: "https://sanjaipandian-portfolio.netlify.app", 
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
