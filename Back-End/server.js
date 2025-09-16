@@ -50,14 +50,14 @@ app.post('/contact', async (req, res) => {
     }
   })
 
-  const mailOptions = {
-    from: email,
-    to: process.env.EMAIL_USER,
-    subject: `New contact from ${name}`,
-    text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}\nMessage: ${message}`  // Include phone in email
-  }
+  // const mailOptions = {
+  //   from: email,
+  //   to: process.env.EMAIL_USER,
+  //   subject: `New contact from ${name}`,
+  //   text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}\nMessage: ${message}`  // Include phone in email
+  // }
 
-  await transporter.sendMail(mailOptions)
+  // await transporter.sendMail(mailOptions)
 
   res.status(200).json({ message: 'Message saved and email sent!' })
 })
