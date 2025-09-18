@@ -2,7 +2,8 @@ import { useState } from "react";
 import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 import "./style.css";
 import logotb from "../assets/logoITB.png";
-import myimage from "../assets/Myimage1.png"
+import Portfolio from "../assets/Sanjaiport.png";
+
 const Hero = () => {
   const [expanded, setExpanded] = useState(false);
 
@@ -82,7 +83,7 @@ const Hero = () => {
 
           <div className="absolute bottom-0 left-0 h-[90%] w-full flex justify-center items-end">
             <img
-              src=""
+              src={Portfolio}
               alt="Sanjai Pandian"
               className="h-full w-auto font-white object-contain"
             />
@@ -118,7 +119,7 @@ const Hero = () => {
               onClick={() => setExpanded(!expanded)}
               className="relative px-6 py-3 text-sm font-semibold text-white border-0 bg-transparent cursor-pointer after:absolute after:right-0 after:top-1/2 after:h-6 after:w-1 after:bg-white before:absolute before:left-0 before:top-1/2 before:h-6 before:w-1 before:bg-white transform after:-translate-y-1/2 before:-translate-y-1/2"
             >
-              {expanded ? "READ LESS" : "READ MORE"}
+              {expanded ? "LESS" : "MORE"}
             </button>
           </div>
 
@@ -130,7 +131,6 @@ const Hero = () => {
             />
           </div>
         </div>
-
       </div>
     </div>
   );

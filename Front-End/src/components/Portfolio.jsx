@@ -11,7 +11,7 @@ const projects = [
     description: "A tourism web app for Tamil Nadu featuring hidden gems, guides, hotels, and AI-powered trip recommendations.",
     tech: "React, Node.js, MongoDB, TailwindCSS, OpenAI API",
     github: "https://github.com/sanjaipandian-as/Explore-TN",
-    live: "https://sanjai-exploretn.netlify.app/",
+    live: "https://explore-tnoffcial.netlify.app/",
     image: finallogo,
   },
   {

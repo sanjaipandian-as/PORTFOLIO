@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import axios from 'axios'
+import emailjs from '@emailjs/browser'
 import Separateblock from "../assets/separatorBlack1.png"
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -14,18 +15,32 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    try {
-      const res = await axios.post(`https://sanjaipandian-ass-portfolio.onrender.com/contact`, formData)
-      if (res.status === 200) {
-        setStatus('Message sent successfully!')
-        setFormData({ name: '', email: '', phone: '', message: '' })
-      }
-    } catch (error) {
-      setStatus('Failed to send message.') 
+const handleSubmit = (e) => {
+  e.preventDefault();
+
+  console.log("Sending email with data:", formData);
+
+  emailjs.send(
+    'service_88ree7s',
+    'template_xelowss',
+    {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      message: formData.message
+    },
+    'G4ArSoFy0rE0g6llo'
+  ).then((response) => {
+    if (response.status === 200) {
+      setStatus('Message sent successfully!');
+      setFormData({ name: '', email: '', phone: '', message: '' });
     }
-  }
+  }, (error) => {
+    console.error("EmailJS error:", error);
+    setStatus('Failed to send message.');
+  });
+}
+
 
   return (
     <section id="contact" className="min-h-screen flex flex-col items-center justify-center bg-gray-100 px-4">

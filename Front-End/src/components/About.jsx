@@ -12,7 +12,7 @@ const About = () => {
         </h2>
         
         <p className="max-w-4xl mx-auto mb-16 leading-relaxed text-gray-600">
-          Nulla in velit a metus rhoncus tempus. Nulla congue nulla vel sem varius finibus. Sed ornare sit amet lorem sed viverra. In vel urna quis libero viverra facilisis ut ac est.
+         A results-driven web developer with a strong focus on crafting scalable, user-centric applications while leveraging modern technologies and emerging innovations.
         </p>
 
         <div className="flex justify-center items-center gap-4 mb-20">
