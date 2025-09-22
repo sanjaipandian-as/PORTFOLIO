@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
-import ProctorXImage from "../assets/ProctorX1.png";
-import prodevai from "../assets/prodevai.png";
+import { FaGithub, FaExternalLinkAlt, FaStar } from "react-icons/fa";
 import finallogo from "../assets/final_logo.png";
-import luxvia from "../assets/luxvia.png";
-
+import ProctorX from "../assets/ProctorX1.png";
+import prodevai from "../assets/Prodevai.png";
+import Luxvia from "../assets/Luxvia.png";
 const projects = [
   {
     title: "Explore TN",
@@ -12,7 +11,9 @@ const projects = [
     tech: "React, Node.js, MongoDB, TailwindCSS, OpenAI API",
     github: "https://github.com/sanjaipandian-as/Explore-TN",
     live: "https://explore-tnoffcial.netlify.app/",
-    image: finallogo,
+    image: finallogo, 
+    category: "Web App",
+    level: "Advanced"
   },
   {
     title: "ProctorX",
@@ -20,7 +21,9 @@ const projects = [
     tech: "React, Node.js, Express, MongoDB, JWT",
     github: "https://github.com/sanjaipandian-as/ProctorX.git",
     live: "",
-    image: ProctorXImage,
+    image: ProctorX, 
+    category: "Education",
+    level: "Advanced"
   },
   {
     title: "ProDev-AI",
@@ -29,6 +32,8 @@ const projects = [
     github: "https://github.com/sanjaipandian-as/PRO-DEV_AI.git",
     live: "https://prodev-ai.netlify.app/",
     image: prodevai,
+    category: "AI",
+    level: "Intermediate"
   },
   {
     title: "Luxivia eCommerce",
@@ -36,31 +41,59 @@ const projects = [
     tech: "React, Node.js, MongoDB, TailwindCSS, Stripe",
     github: "https://github.com/sanjaipandian-as/E-Commerse_IN.git",
     live: "",
-    image: luxvia,
+    image: Luxvia,
+    category: "E-Commerce",
+    level: "Advanced"
   },
 ];
 
 const ProjectCard = ({ project, handleLinkClick }) => {
   return (
-    <div className="card">
-      <div className="border"></div>
-      <div className="content">
-        <img src={project.image} alt={project.title} className="project-image" />
-        <h3 className="project-title">{project.title}</h3>
-        <div className="hover-content">
-          <p className="project-description">{project.description}</p>
-          <p className="project-tech">Tech: {project.tech}</p>
-          <div className="project-links">
-            <button onClick={() => handleLinkClick(project.github)}>
-              <FaGithub size={24} />
-            </button>
-            <button onClick={() => handleLinkClick(project.live)}>
-              <FaExternalLinkAlt size={24} />
-            </button>
+    <div className="relative w-80 h-[280px] rounded-2xl overflow-hidden cursor-pointer transition-transform duration-300 bg-gradient-to-br from-gray-50 to-gray-200 shadow-lg hover:-translate-y-2 hover:shadow-2xl group">
+      
+      <div className="absolute inset-0 flex flex-col items-center justify-center bg-white transition-opacity duration-300 p-8 text-center group-hover:opacity-0">
+        <div className="w-30 h-30 rounded-full overflow-hidden mb-6 border-4 border-yellow-400 flex items-center justify-center bg-gray-50">
+          <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+        </div>
+        <h3 className="text-2xl font-semibold text-gray-700 m-0">{project.title}</h3>
+      </div>
+
+      
+      <div className="absolute inset-0 flex flex-col p-6 bg-gradient-to-br from-amber-50 to-orange-100 text-gray-800 opacity-0 transition-opacity duration-300 group-hover:opacity-100 overflow-y-auto scrollbar-hide">
+        <div className="mb-4">
+          <h3 className="text-xl font-semibold mb-2 text-gray-800">{project.title}</h3>
+          <div className="flex gap-2">
+            <span className="bg-orange-200 text-orange-800 px-3 py-1 rounded-xl text-xs font-medium">
+              {project.category}
+            </span>
           </div>
         </div>
+        
+        <div className="flex flex-col gap-2 mb-4">
+          <div className="flex items-center gap-2 text-sm text-gray-700">
+            <FaStar className="w-3.5 h-3.5 text-orange-600" />
+            <span>{project.level}</span>
+          </div>
+        </div>
+
+        <p className="text-sm leading-relaxed mb-3 text-gray-700">{project.description}</p>
+        <p className="text-xs font-mono text-orange-700 mb-4 font-medium">{project.tech}</p>
+
+        <div className="flex gap-3 mt-auto">
+          <button 
+            className="flex-1 flex items-center justify-center gap-2 py-3 bg-gray-800 text-white rounded-lg text-sm font-medium transition-all duration-200 hover:bg-gray-600 hover:-translate-y-0.5"
+            onClick={() => handleLinkClick(project.github)}
+          >
+            <FaGithub /> GitHub
+          </button>
+          <button 
+            className="flex-1 flex items-center justify-center gap-2 py-3 bg-orange-600 text-white rounded-lg text-sm font-medium transition-all duration-200 hover:bg-orange-500 hover:-translate-y-0.5"
+            onClick={() => handleLinkClick(project.live)}
+          >
+            <FaExternalLinkAlt /> Live Demo
+          </button>
+        </div>
       </div>
-      <span className="bottom-text">{project.title}</span>
     </div>
   );
 };
@@ -79,154 +112,73 @@ const Portfolio = () => {
   const closePopup = () => setPopupVisible(false);
 
   return (
-    <section id="portfolio" className="w-full bg-gray-50 py-20 px-6 flex flex-col items-center relative">
-      <h2 className="inline-block border-4 border-black px-6 py-3 text-xl font-bold tracking-widest uppercase mb-12">
-        Portfolio
-      </h2>
-
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-[1200px] w-full justify-center">
-        {projects.map((project, index) => (
-          <ProjectCard key={index} project={project} handleLinkClick={handleLinkClick} />
-        ))}
+    <section className="w-full bg-gray-50 py-20 px-6 min-h-screen">
+      <div className="max-w-6xl text-center mx-auto">
+        <h2 className="inline-block border-4 border-gray-800 px-8 py-4 text-2xl font-bold tracking-widest uppercase mb-12 bg-white text-gray-800">
+    Portfolio
+  </h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+          {projects.map((project, index) => (
+            <ProjectCard 
+              key={index} 
+              project={project} 
+              handleLinkClick={handleLinkClick} 
+            />
+          ))}
+        </div>
       </div>
 
       {popupVisible && (
-        <div className="fixed bottom-0 left-0 w-full bg-black text-white p-6 flex flex-col items-center z-50 animate-slide-up">
-          <p className="mb-4 text-center text-lg">
-            This link is not available. Please raise a ticket via the contact form.
-          </p>
-          <div className="flex gap-4">
-            <button onClick={closePopup} className="bg-green-600 hover:bg-green-700 px-6 py-2 rounded-lg transition-colors">
-              OK
-            </button>
-            <button onClick={closePopup} className="bg-red-600 hover:bg-red-700 px-6 py-2 rounded-lg transition-colors">
-              Decline
-            </button>
+        <div className="fixed bottom-0 left-0 w-full bg-gray-800 text-white p-6 z-50 animate-slide-up">
+          <div className="max-w-2xl mx-auto text-center">
+            <p className="text-lg mb-4">
+              This link is not available. Please raise a ticket via the contact form.
+            </p>
+            <div className="flex gap-4 justify-center flex-col sm:flex-row">
+              <button 
+                onClick={closePopup} 
+                className="px-6 py-3 bg-green-600 hover:bg-green-500 rounded-lg font-semibold transition-colors duration-200"
+              >
+                OK
+              </button>
+              <button 
+                onClick={closePopup} 
+                className="px-6 py-3 bg-red-600 hover:bg-red-500 rounded-lg font-semibold transition-colors duration-200"
+              >
+                Decline
+              </button>
+            </div>
           </div>
         </div>
       )}
-
+      
       <style jsx>{`
-        .card {
-          width: 300px;
-          height: 250px;
-          background: #243137;
-          position: relative;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 10px;
-          overflow: hidden;
-          transition: all 0.5s ease-in-out;
-          color: #bd9f67;
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
         }
-        .border {
-          position: absolute;
-          inset: 0px;
-          border: 2px solid #bd9f67;
-          opacity: 0;
-          transform: rotate(10deg);
-          transition: all 0.5s ease-in-out;
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
         }
-        .content {
-          text-align: center;
-          transition: all 0.5s ease-in-out;
-        }
-        .project-image {
-          width: 100px;
-          height: 100px;
-          object-fit: cover; /* Changed from contain to cover */
-          /* border-radius: 50%; Removed this */
-          clip-path: circle(50%); /* Added clip-path for circular visual */
-          border: 2px solid #bd9f67;
-          margin-bottom: 1rem;
-          transition: all 0.5s ease-in-out;
-        }
-        .project-title {
-          font-size: 1.5rem;
-          font-weight: bold;
-          transition: all 0.5s ease-in-out;
-        }
-        .hover-content {
-          position: absolute;
-          inset: 0;
-          padding: 20px;
-          background: rgba(36, 49, 55, 0.95);
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          opacity: 0;
-          transition: opacity 0.5s ease-in-out;
-        }
-        .project-description {
-          font-size: 0.9rem;
-          color: #e0e0e0;
-          margin-bottom: 1rem;
-        }
-        .project-tech {
-          font-size: 0.8rem;
-          color: #bd9f67;
-          margin-bottom: 1.5rem;
-          font-family: monospace;
-        }
-        .project-links {
-          display: flex;
-          gap: 1.5rem;
-          color: white;
-        }
-        .project-links button:hover {
-          color: #bd9f67;
-          transform: scale(1.1);
-        }
-        .bottom-text {
-          position: absolute;
-          left: 50%;
-          bottom: 13px;
-          transform: translateX(-50%);
-          font-size: 8px;
-          text-transform: uppercase;
-          color: #bd9f67;
-          opacity: 0;
-          letter-spacing: 7px;
-          transition: all 0.5s ease-in-out;
-        }
-        .card:hover {
-          transform: scale(1.1);
-          color: white;
-        }
-        .card:hover .border {
-          inset: 15px;
-          opacity: 1;
-          transform: rotate(0);
-        }
-        .card:hover .content .project-image,
-        .card:hover .content .project-title {
-          opacity: 0;
-        }
-        .card:hover .hover-content {
-          opacity: 1;
-        }
-        .card:hover .bottom-text {
-          letter-spacing: 3px;
-          opacity: 1;
-        }
+        
         @keyframes slide-up {
-          0% {
+          from {
             transform: translateY(100%);
             opacity: 0;
           }
-          100% {
+          to {
             transform: translateY(0);
             opacity: 1;
           }
         }
         .animate-slide-up {
-          animation: slide-up 0.3s ease-out forwards;
+          animation: slide-up 0.3s ease-out;
         }
       `}</style>
     </section>
   );
 };
+
 
 export default Portfolio;
