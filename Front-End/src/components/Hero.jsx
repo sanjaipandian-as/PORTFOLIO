@@ -26,7 +26,7 @@ const Hero = () => {
               Sanjai Pandian
             </h1>
             <h3 className="text-xl text-gray-600 mb-10">
-              Front-end Developer / AI Enthusiast
+              Full-Stack Web Developer / AI Enthusiast
             </h3>
           </div>
 
